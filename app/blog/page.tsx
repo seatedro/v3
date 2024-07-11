@@ -10,7 +10,7 @@ export default function Page() {
     <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">my bl.og</h1>
       <h2 className=''>no posts yet! come back later</h2>
-      {/*<BlogPosts />*/}
+      <BlogPosts />
     </section>
   )
 }

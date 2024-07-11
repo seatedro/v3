@@ -11,15 +11,15 @@ import { baseUrl } from './sitemap'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Rohit Prakash',
+    template: '%s | seatedro',
   },
-  description: 'This is my portfolio.',
+  description: 'developer, gamer, human.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Rohit Prakash',
+    description: 'developer, gamer, human.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Rohit Prakash',
     locale: 'en_US',
     type: 'website',
   },
@@ -33,6 +33,11 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  twitter: {
+    title: "Rohit Prakash",
+    card: "summary_large_image",
+    creator: "@seatedro",
   },
 }
 

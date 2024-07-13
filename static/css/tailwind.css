@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  nav {
+    @apply text-[#fe8019] bg-[#3c3836]
+  }
+  h1 {
+    @apply text-[#b8bb26] my-2
+  }
+  h2 {
+    @apply text-[#98971a] text-2xl my-2
+  }
+  h3 {
+    @apply text-[#8ec07c] text-lg my-2
+  }
+  code, pre {
+    white-space : pre-wrap !important;
+    overflow-wrap: anywhere !important;
+  }
+  pre {
+    white-space: pre;  /* Keep the default white-space behavior */
+    overflow: auto;  /* Add scrollbars if the content overflows */
+    max-width: 100%;  /* Ensure the pre block doesn't exceed the container's width */
+  }
+}

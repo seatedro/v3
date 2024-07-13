@@ -1,0 +1,11 @@
+package templates
+
+import (
+"github.com/seatedro/v3/internal/models"
+"github.com/seatedro/v3/internal/shared"
+)
+
+templ HomeComponent(userData models.User, recentPosts []models.Post) {
+@shared.Layout("Rohit Prakash", userData) {
+}
+}

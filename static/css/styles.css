@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'GeistMono';
+    src: url('/static/fonts/GeistMono-Regular.otf') format('opentype');
+}
+
+body {
+    font-family: 'GeistMono', sans-serif;
+}

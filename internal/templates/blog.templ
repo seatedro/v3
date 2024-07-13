@@ -13,8 +13,8 @@ templ BlogComponent(userData models.User, posts []models.Post) {
 	<ul>
 		for _, post := range posts {
 		<li class="mb-4">
-			<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary hover:bg-white">
-				<div class="flex justify-between items-center relative">
+			<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary no-underline">
+				<div class="flex justify-between items-center relative hover:bg-[#928374]">
 					<span
 						class="after:content-['_._._._._._._._._._._._._._._._._._.'] overflow-hidden whitespace-nowrap text-gray-400 flex-1">
 						{ post.Date.Format("2006-01-02") }

@@ -888,6 +888,10 @@ a {
   text-decoration-line: underline;
 }
 
+.no-underline {
+  text-decoration-line: none;
+}
+
 .underline-offset-4 {
   text-underline-offset: 4px;
 }
@@ -902,9 +906,9 @@ a {
   content: var(--tw-content);
 }
 
-.hover\:bg-white:hover {
+.hover\:bg-\[\#928374\]:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(146 131 116 / var(--tw-bg-opacity));
 }
 
 .hover\:underline:hover {

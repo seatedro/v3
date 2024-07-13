@@ -7,6 +7,7 @@ import (
 
 	"github.com/seatedro/v3/internal/models"
 	"github.com/seatedro/v3/internal/templates"
+	"github.com/seatedro/v3/internal/utils"
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {

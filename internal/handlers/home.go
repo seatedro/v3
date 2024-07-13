@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"os"
 
@@ -26,6 +27,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	recentPosts, err := utils.GetRecentPosts(3)
 	if err != nil {
+		fmt.Println(err)
 		http.Error(w, "Error getting recent posts", http.StatusInternalServerError)
 		return
 	}

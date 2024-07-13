@@ -24,4 +24,7 @@
     overflow: auto;  /* Add scrollbars if the content overflows */
     max-width: 100%;  /* Ensure the pre block doesn't exceed the container's width */
   }
+  a {
+    @apply underline underline-offset-2
+  }
 }

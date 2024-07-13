@@ -1,5 +1,5 @@
 ---
-cover: /articles/procrastin8.gif
+cover: /static/images/procrastin8.gif
 author:
   name: Rohit Prakash
 date: 2020-12-5
@@ -9,6 +9,7 @@ tags:
 title: Get Shit Done
 ---
 
+![Get shit done](/static/images/procrastin8.gif)
 ## What is procrastination and why do we do it?
 According to Wikipedia, Procrastination is the action of delaying or postponing something.
 

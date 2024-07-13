@@ -36,6 +36,7 @@ func GetRecentPosts(count int) ([]models.Post, error) {
 func GetAllPosts() ([]models.Post, error) {
 	files, err := os.ReadDir("content/posts")
 	if err != nil {
+		fmt.Println(err)
 		return nil, err
 	}
 

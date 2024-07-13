@@ -492,6 +492,11 @@ pre {
   /* Ensure the pre block doesn't exceed the container's width */
 }
 
+a {
+  text-decoration-line: underline;
+  text-underline-offset: 2px;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;

@@ -1,6 +1,6 @@
 ---
 cover: /static/images/object-detection/object-detection.webp
-date: 2020-10-05
+date: 2020-05-10
 summary: An object detection model in tf to detect cheating in online interviews.
 tags:
   - "ai"

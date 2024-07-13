@@ -5,5 +5,42 @@
 	"bio": "currently a student (mscs @ nyu). i love learning new things and building with it. i love programming languages and neovim. currently trying to beat the final boss in elden ring but failing miserably.",
 	"github": "https://github.com/seatedro",
 	"twitter": "https://twitter.com/seatedro",
-	"linkedin": "https://linkedin.com/in/rohitp934"
+	"linkedin": "https://linkedin.com/in/rohitp934",
+	"work": [
+		{
+			"company": "NBCUniversal",
+			"href": "https://nbcuniversal.com",
+			"position": "swe intern (sre)",
+			"duration": "(jun '24 - aug '24)",
+			"description": "shipped go services to prod that collect metrics for aws services. improved error handling and fault tolerance. built grafana dashboards and closed jira tickets."
+		},
+		{
+			"company": "HiringTek",
+			"href": "https://hiringtek.com",
+			"position": "swe",
+			"duration": "(aug '21 - jun '23)",
+			"description": "built an e2e coding platform for online interviews. overhauled performance. improved dx with sota dev tooling."
+		}
+	],
+	"projects": [
+		{
+			"title": "guam",
+			"href": "https://github.com/seatedro/guam",
+			"description": "rewrite of lucia-auth in go."
+		},
+		{
+			"title": "mira(me)",
+			"href": "https://github.com/seatedro/mirame",
+			"description": "my version of the monkeylang interpreter in rust & go."
+		},
+		{
+			"title": "coding.rs",
+			"href": "https://github.com/seatedro/coding.rs",
+			"description": "juiced up online judge written in rust (btw)."
+		},
+		{
+			"title": "all projects →",
+			"href": "https://github.com/seatedro"
+		}
+	]
 }

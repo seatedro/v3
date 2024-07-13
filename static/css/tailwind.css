@@ -6,4 +6,10 @@
   nav {
     @apply text-[#fe8019] bg-[#3c3836]
   }
+  h1 {
+    @apply text-[#b8bb26]
+  }
+  h2 {
+    @apply text-[#98971a]
+  }
 }

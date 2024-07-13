@@ -9,7 +9,7 @@ import (
 
 func main() {
 	http.HandleFunc("/", handlers.HomeHandler)
-	// http.HandleFunc("/", handlers.BlogHandler)
+	http.HandleFunc("/blog", handlers.BlogHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	log.Println("Server starting on :8080")

@@ -3,6 +3,7 @@ package templates
 import (
 "github.com/seatedro/v3/internal/models"
 "github.com/seatedro/v3/internal/shared"
+"strings"
 )
 
 templ HomeComponent(userData models.User, recentPosts []models.Post) {
@@ -74,18 +75,22 @@ templ HomeComponent(userData models.User, recentPosts []models.Post) {
 	</div>
 	if len(recentPosts) != 0 {
 	<section>
-		<h2 class="text-2xl font-semibold mb-4">Recent Posts</h2>
-		for _, post := range recentPosts {
-		<article class="mb-4">
-			<h3 class="text-xl font-semibold">{ post.Title }</h3>
-			<p class="text-gray-400">{ post.Date.Format("2006-01-02") }</p>
-			<p class="mt-2">{ post.Summary }</p>
-			<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary hover:underline">
-				Read
-				more
-			</a>
-		</article>
-		}
+		<h2 class="text-2xl font-semibold mb-4">recent posts</h2>
+		<ul>
+			for _, post := range recentPosts {
+			<li class="mb-4">
+				<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary hover:bg-white">
+					<div class="flex justify-between items-center relative">
+						<span
+							class="after:content-['_._._._._._._._._._._._._._._._._._.'] overflow-hidden whitespace-nowrap text-gray-400 flex-1">
+							{ post.Date.Format("2006-01-02") }
+						</span>
+						<p class="font-semibold">{ strings.ToLower(post.Title) }</p>
+					</div>
+				</a>
+			</li>
+			}
+		</ul>
 	</section>
 	}
 </div>

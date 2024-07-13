@@ -1,5 +1,5 @@
 ---
-cover: /articles/object-detection/object-detection.webp
+cover: /static/images/object-detection/object-detection.webp
 date: 2020-10-05
 summary: An object detection model in tf to detect cheating in online interviews.
 tags:
@@ -7,8 +7,7 @@ tags:
 title: TF2 Object Detection
 ---
 
-# Tensorflow 2 Object Detection
-![Object Detection](/articles/object-detection/object-detection.webp)
+![Object Detection](/static/images/object-detection/object-detection.webp)
 
 There are many guides out there that are very good to help you get started with setting up the TF Object Detection API, but unfortunately, most of them are written for the TF v1 API.
 
@@ -19,17 +18,18 @@ Before we begin the setup, make sure to change the runtime-type in Colab to GPU 
 ---
 
 ### Installing Dependencies and setting up the workspace.
+
 Create a folder for your workspace
 
 *(Remember, you will be executing all of these commands in your colab/jupyter notebook)*
 
-```zsh[Colab Cell]
+```bash
 %mkdir workspace
 %cd /content/workspace
 ```
 We will be cloning the TF repository from GitHub.
 
-```zsh[Colab Cell]
+```bash
 !git clone --q https://github.com/tensorflow/models.git
 ```
 
@@ -37,21 +37,21 @@ And before we install TF Object Detection we must install Protobuf.
 
 *“The Tensorflow Object Detection API uses Protobufs to configure model and training parameters. Before the framework can be used, the Protobuf libraries must be downloaded and compiled”*
 
-```zsh[Colab Cell]
+```bash
 !apt-get install -qq protobuf-compiler python-pil python-lxml python-tk
 !pip install -qq Cython contextlib2 pillow lxml matplotlib!pip install -qq pycocotools
 %cd models/research/
 !protoc object_detection/protos/*.proto --python_out=.
 ```
 Now we install the TF Object Detection API
-```zsh[Colab Cell]
+```bash
 %cp object_detection/packages/tf2/setup.py .
 !python -m pip install .
 !python object_detection/builders/model_builder_tf2_test.py
 ```
 
 The output should be as follows:
-![Install output](/articles/object-detection/output.webp)
+![Install output](/static/images/object-detection/output.webp)
 
 ### Preparing the Dataset
 
@@ -71,18 +71,18 @@ Now we need to label the images. There are many popular labeling tools, we will 
 
 To install LabelIMG, execute the following code (Do it on your local Terminal since Colab does not support GUI applications):
 
-```zsh[terminal]
+```bash
 pip install labelImg
 ```
 
 Launch LabelImg in the folder where your images are stored.
-```zsh[terminal]
+```bash
 labelImg imagesdir
 ```
 
 Now you can start labeling your images, for more info on how to label the images follow this [link](https://github.com/heartexlabs/labelImg#usage) (LabelImg Repository).
 
-![LabelImg](/articles/object-detection/labelimg.webp)
+![LabelImg](/static/images/object-detection/labelimg.webp)
 
 Create a label map in notepad as follows (label_map.pbtxt) with two classes for example cars and bikes:
 
@@ -109,7 +109,7 @@ Creating the TFRecords ourselves is a bit tedious as the XML created after annot
 
 For your reference, here is a `sample.py` script to create the TFRecords manually.
 
-```py[createTfRecords.py]
+```py
 import pandas as pd
 import numpy as np
 import csv
@@ -247,7 +247,7 @@ if __name__ == '__main__':
 
 Use the above code for train and test images to create `train.tfrecord` and `test.tfrecord` respectively by changing the following:
 
-```py[createTfRecords.py]
+```py
 xml_dir = 'images/test'
 image_dir = 'images/test'
 output_path = 'annotations/test.record'
@@ -260,7 +260,7 @@ By using Roboflow you will be provided the TFRecord files automatically.
 Create folders to store all the necessary files we have just created.
 
 `my_mobilenet` folder is where our training results will be stored
-```zsh[Colab cell]
+```bash
 %mkdir annotations exported-models pre-trained-models models/my_mobilenet
 ```
 Now upload the newly created TFRecord files along with the images and annotations to Google Colab by clicking upload files.
@@ -277,12 +277,12 @@ Be careful in choosing which model to use as some are not made for Object Detect
 
 Download it into your Colab Notebook and extract it by executing:
 
-```zsh[Colab Cell]
+```bash
 %cd pre-trained-models
 !curl "http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8.tar.gz" --output "ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8.tar.gz"
 ```
 
-```py[Colab Cell]
+```py
 model_name = 'ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8'
 model_file = model_name + '.tar.gz'
 tar = tarfile.open(model_file)
@@ -316,7 +316,7 @@ In TF Object Detection API, all the settings and required information for traini
 Let us take a look at it:
 
 The most important ones we will need to change are:
-```[pipeline.config]
+```protobuf
 batch_size: 128
 fine_tune_checkpoint: "PATH_TO_BE_CONFIGURED"
 num_steps: 50000
@@ -350,7 +350,7 @@ If you are starting the training for the first time, set this to the pre-trained
 
 If you want to continue training on a previously trained checkpoint, set it to the respective checkpoint path. (This will continue training, building upon the features and loss instead of starting from scratch).
 
-```[pipeline.config]
+```protobuf
 # For Fresh Training
 fine_tune_checkpoint: "pre-trained-model/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/checkpoint/ckpt-0"
 
@@ -381,7 +381,7 @@ eval_input_reader {
 
 After editing the config file, we need to add the TensorFlow object detection folders to the python path.
 
-```py[Colab Cell]
+```py
 import os
 os.environ['PYTHONPATH'] += ':/content/window_detection/models/:/content/window_detection/models/research/:/content/window_detection/models/research/slim/'
 ```
@@ -390,12 +390,12 @@ os.environ['PYTHONPATH'] += ':/content/window_detection/models/:/content/window_
 
 Colab has introduced inbuilt support for TensorBoard and can now be called with a simple magic command as follows
 
-```zsh[Colab Cell]
+```bash
 %load_ext tensorboard
 %tensorboard --logdir 'models/my_mobilenet'
 ```
 
-![Cell Running Tensorbard](/articles/object-detection/tensorboard-cell.webp)
+![Cell Running Tensorbard](/static/images/object-detection/tensorboard-cell.webp)
 
 This is how the cell will look once you execute the above command, but nothing to worry, once we start the training job, click refresh on the Tensorboard cell(Top Right) after a few minutes(The .tfevent files need to be created for us to monitor the TensorFlow logs) and you will see the output on the TensorBoard magic cell
 
@@ -403,7 +403,7 @@ This is how the cell will look once you execute the above command, but nothing t
 
 We will copy the TensorFlow training python script to the workspace directory for ease of access.
 
-```zsh[Colab Cell]
+```bash
 !cp '/content/window_detection/models/research/object_detection/model_main_tf2.py' .
 ```
 
@@ -414,7 +414,7 @@ The training job requires command-line arguments, namely:
 
 Execute the following command to start the training job
 
-```zsh[Colab Cell]
+```bash
 # If you are training from scratch
 !python model_main_tf2.py --model_dir=models/my_mobilenet --pipeline_config_path=pre-trained-model/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/pipeline.config# Or if you are continuing from a previous training
 !python model_main_tf2.py --model_dir=models/my_mobilenet --pipeline_config_path=exported_models/pipeline.config
@@ -422,13 +422,13 @@ Execute the following command to start the training job
 
 If everything goes well, the training output cell should look like this
 
-![Training Output](/articles/object-detection/trainingoutput.webp)
+![Training Output](/static/images/object-detection/trainingoutput.webp)
 
 The output will normally update slowly. The training outputs logs only every 100 steps by default, therefore if you wait for a while, you should see a log for the loss at step 100. The speed depends on whether a GPU is being used to train and the available VRAM and many other factors, so be patient.
 
 Refresh the TensorBoard while the training is running and you will be able to monitor the progress
 
-![Tensorboard Logs](/articles/object-detection/tensorboard.webp)
+![Tensorboard Logs](/static/images/object-detection/tensorboard.webp)
 
 Once the loss reaches a fairly constant value or becomes lower than 0.05(in my case), then you can stop the training cell.
 
@@ -438,13 +438,13 @@ Now you can run the evaluation script to find out the mAP (Mean Average Precisio
 
 Run the following in a cell:
 
-```zsh[Colab Cell]
+```bash
 !python model_main_tf2.py --model_dir=exported-models/checkpoint --pipeline_config_path=exported-models/pipeline.config --checkpoint_dir=models/my_mobilenet/checkpoint # The folder where the model has saved the checkpoints during training
 ```
 
 You should get an output that looks like this
 
-![Evaluation Output](/articles/object-detection/evalresults.webp)
+![Evaluation Output](/static/images/object-detection/evalresults.webp)
 
 Now the evaluation script has a default timeout of 3600 seconds to wait for a new checkpoint to be generated as the script was initially intended to be running in parallel to the training job, but we are running it after the training process on Colab
 
@@ -456,7 +456,7 @@ Now that we have our model ready, we need to save it in a format we can use it l
 
 We now have a bunch of checkpoints in the `models/my_mobilenet` folder. To remove all the older checkpoints and keep the latest checkpoint, I have attached a neat little python script that will do the task automatically.
 
-```py[GetLatestCheckpoint.py]
+```py
 output_directory = 'exported-models/'
 
 # goes through the model is the training/ dir and gets the last one.
@@ -472,7 +472,7 @@ last_model_path = os.path.join('models/my_mobilenet', last_model)
 
 Now to export the model, we run the export script provided by TF2, as follows:
 
-```zsh[Colab Cell]
+```bash
 !python /content/workspace/models/research/object_detection/exporter_main_v2.py --input_type=image_tensor \
 --pipeline_config_path=pre-trained-model/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/pipeline.config
 --output_directory=exported_models \
@@ -497,7 +497,7 @@ The final step, the step that fills you with a sense of accomplishment, in this 
 
 The entire process is a little tedious but I will attach a script that will let you perform inference directly on Google Colab
 
-```py[InferenceOnTFObjectDetection.py]
+```py
 import numpy as np
 from PIL import Image
 from google.colab.patches import cv2_imshow
@@ -563,7 +563,7 @@ cv2_imshow(image_np_with_detections)
 
 The output of the inference should be like this
 
-![Inference Image](/articles/object-detection/inference.webp)
+![Inference Image](/static/images/object-detection/inference.webp)
 
 You can use the above script to fashion it into using a video as an input and perform inference on that.
 

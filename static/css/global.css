@@ -454,13 +454,42 @@ nav {
 }
 
 h1 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   --tw-text-opacity: 1;
   color: rgb(184 187 38 / var(--tw-text-opacity));
 }
 
 h2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   --tw-text-opacity: 1;
   color: rgb(152 151 26 / var(--tw-text-opacity));
+}
+
+h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  --tw-text-opacity: 1;
+  color: rgb(142 192 124 / var(--tw-text-opacity));
+}
+
+code, pre {
+  white-space : pre-wrap !important;
+  overflow-wrap: anywhere !important;
+}
+
+pre {
+  white-space: pre;
+  /* Keep the default white-space behavior */
+  overflow: auto;
+  /* Add scrollbars if the content overflows */
+  max-width: 100%;
+  /* Ensure the pre block doesn't exceed the container's width */
 }
 
 *, ::before, ::after {
@@ -624,6 +653,10 @@ h2 {
   margin-bottom: 2rem;
 }
 
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .mb-4 {
   margin-bottom: 1rem;
 }
@@ -664,6 +697,14 @@ h2 {
   min-width: 0px;
 }
 
+.max-w-2xl {
+  max-width: 42rem;
+}
+
+.max-w-none {
+  max-width: none;
+}
+
 .max-w-xl {
   max-width: 36rem;
 }
@@ -692,12 +733,20 @@ h2 {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
 }
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .gap-4 {
@@ -734,9 +783,18 @@ h2 {
   white-space: nowrap;
 }
 
+.rounded-full {
+  border-radius: 9999px;
+}
+
 .bg-\[\#282828\] {
   --tw-bg-opacity: 1;
   background-color: rgb(40 40 40 / var(--tw-bg-opacity));
+}
+
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
 .px-2 {
@@ -747,6 +805,11 @@ h2 {
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 .py-6 {
@@ -766,6 +829,11 @@ h2 {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-xl {
@@ -799,6 +867,11 @@ h2 {
 .text-\[\#fbf1c7\] {
   --tw-text-opacity: 1;
   color: rgb(251 241 199 / var(--tw-text-opacity));
+}
+
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 .text-gray-400 {

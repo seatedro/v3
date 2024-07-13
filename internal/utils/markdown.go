@@ -9,8 +9,10 @@ import (
 	"strings"
 
 	"github.com/adrg/frontmatter"
+	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
 	"github.com/seatedro/v3/internal/models"
 	"github.com/yuin/goldmark"
+	highlighting "github.com/yuin/goldmark-highlighting/v2"
 	"gopkg.in/yaml.v2"
 )
 
@@ -57,7 +59,15 @@ func GetAllPosts() ([]models.Post, error) {
 
 		// Parse the remaining content as Markdown
 		var buf bytes.Buffer
-		if err := goldmark.Convert(rest, &buf); err != nil {
+		markdown := goldmark.New(
+			goldmark.WithExtensions(
+				highlighting.NewHighlighting(
+					highlighting.WithStyle("catppuccin-mocha"),
+					highlighting.WithFormatOptions(chromahtml.WithLineNumbers(true)),
+				),
+			),
+		)
+		if err := markdown.Convert(rest, &buf); err != nil {
 			return nil, err
 		}
 		post.Content = buf.String()
@@ -69,6 +79,21 @@ func GetAllPosts() ([]models.Post, error) {
 	}
 
 	return posts, nil
+}
+
+func GetPostBySlug(slug string) (models.Post, error) {
+	posts, err := GetAllPosts()
+	if err != nil {
+		return models.Post{}, err
+	}
+
+	for _, post := range posts {
+		if post.Slug == slug {
+			return post, nil
+		}
+	}
+
+	return models.Post{}, fmt.Errorf("Post not found!")
 }
 
 func generateSlug(title string) string {

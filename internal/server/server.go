@@ -38,6 +38,15 @@ func NewServer() *Server {
 	}
 
 	http.HandleFunc("/", newServer.HomeHandler)
+	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		data, err := os.ReadFile("robots.txt")
+		if err != nil {
+			http.Error(w, "Could not read robots.txt", http.StatusInternalServerError)
+			return
+		}
+		w.Header().Set("Content-Type", "text/plain")
+		w.Write(data)
+	})
 	http.HandleFunc("/blog", newServer.BlogHandler)
 	http.HandleFunc("/blog/", newServer.BlogPostHandler)
 	http.HandleFunc("/api/metrics/stream", newServer.MetricsStreamHandler)

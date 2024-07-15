@@ -1,7 +1,7 @@
 package server
 
 import (
-	"context"
+	// "context"
 	"encoding/json"
 	"fmt"
 	"log"
@@ -91,36 +91,39 @@ func (s *Server) MetricsStreamHandler(w http.ResponseWriter, r *http.Request) {
 	clientClosed := r.Context().Done()
 
 	// Create a ticker to send updates to the client every 60 seconds
-	ticker := time.NewTicker(60 * time.Second)
+	ticker := time.NewTicker(5 * time.Second)
 	defer ticker.Stop()
+
+	streamMetrics := func() {
+		metrics, err := s.dbQueries.GetLatestMetrics(r.Context())
+		if err != nil {
+			fmt.Printf("Coudln't fetch metrics: %v", err)
+			fmt.Fprintf(w, "error: %v\n\n", err)
+			flusher.Flush()
+			return
+		}
+
+		data, err := json.Marshal(metrics)
+		if err != nil {
+			fmt.Fprintf(w, "error: %v\n\n", err)
+			flusher.Flush()
+			return
+		}
+
+		fmt.Fprintf(w, "data: %s\n\n", data)
+		flusher.Flush()
+	}
+
+	streamMetrics()
 
 	for {
 		select {
-
 		case <-clientClosed:
 			// The client has disconnected, so we return from the handler.
 			log.Println("Client Disconnected.")
 			return
 		case <-ticker.C:
-			metrics, err := s.dbQueries.GetLatestMetrics(context.Background())
-			if err != nil {
-				fmt.Fprintf(w, "error: %v\n\n", err)
-				flusher.Flush()
-				return
-			}
-
-			data, err := json.Marshal(metrics)
-			if err != nil {
-				fmt.Fprintf(w, "error: %v\n\n", err)
-				flusher.Flush()
-				return
-			}
-
-			fmt.Fprintf(w, "data: %s\n\n", data)
-			flusher.Flush()
-
-			time.Sleep(60 * time.Second)
-
+			streamMetrics()
 		}
 	}
 }

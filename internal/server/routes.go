@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"time"
@@ -86,24 +87,40 @@ func (s *Server) MetricsStreamHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Create a channel to signal when the client has disconnected
+	clientClosed := r.Context().Done()
+
+	// Create a ticker to send updates to the client every 60 seconds
+	ticker := time.NewTicker(60 * time.Second)
+	defer ticker.Stop()
+
 	for {
-		metrics, err := s.dbQueries.GetLatestMetrics(context.Background())
-		if err != nil {
-			fmt.Fprintf(w, "error: %v\n\n", err)
-			flusher.Flush()
+		select {
+
+		case <-clientClosed:
+			// The client has disconnected, so we return from the handler.
+			log.Println("Client Disconnected.")
 			return
-		}
+		case <-ticker.C:
+			metrics, err := s.dbQueries.GetLatestMetrics(context.Background())
+			if err != nil {
+				fmt.Fprintf(w, "error: %v\n\n", err)
+				flusher.Flush()
+				return
+			}
 
-		data, err := json.Marshal(metrics)
-		if err != nil {
-			fmt.Fprintf(w, "error: %v\n\n", err)
+			data, err := json.Marshal(metrics)
+			if err != nil {
+				fmt.Fprintf(w, "error: %v\n\n", err)
+				flusher.Flush()
+				return
+			}
+
+			fmt.Fprintf(w, "data: %s\n\n", data)
 			flusher.Flush()
-			return
+
+			time.Sleep(60 * time.Second)
+
 		}
-
-		fmt.Fprintf(w, "data: %s\n\n", data)
-		flusher.Flush()
-
-		time.Sleep(60 * time.Second)
 	}
 }

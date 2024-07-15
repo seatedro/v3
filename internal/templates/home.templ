@@ -124,6 +124,13 @@ templ HomeComponent(userData models.User, recentPosts []models.Post) {
 				console.error('EventSource failed:', error);
 				eventSource.close();
 			};
+
+			// Clean up EventSource when the page is unloaded
+			document.addEventListener("visibilitychange", () => {
+				if (document.hidden) {
+					eventSource.close();
+				}
+			})
 		}
 
 		updateMetrics();

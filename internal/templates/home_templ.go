@@ -233,7 +233,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-primary no-underline\"><div class=\"flex justify-between items-center relative hover:bg-[#928374]\"><span class=\"after:content-[&#39;_._._._._._._._._._._._._._._._._._.&#39;] overflow-hidden whitespace-nowrap text-gray-400 flex-1\">")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-primary no-underline\"><div class=\"flex justify-between items-center relative hover:bg-[#504945]\"><span class=\"after:content-[&#39;_._._._._._._._._._._._._._._._._._.&#39;] overflow-hidden whitespace-nowrap text-gray-400 flex-1\">")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
@@ -269,7 +269,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section><h2 class=\"text-2xl font-semibold mb-4\">dumb daily stats</h2><div class=\"flex space-x-4\"><div class=\"bg-[#504945] text-white p-4 flex flex-col items-center\"><div id=\"keypresses\" class=\"text-xl font-bold transition-all ease-in-out\">0</div><div class=\"text-sm\">keypresses</div></div><div class=\"bg-[#504945] text-white p-4 flex flex-col items-center\"><div id=\"mouseclicks\" class=\"text-xl font-bold transition-all ease-in-out\">0</div><div class=\"text-sm\">mouse clicks</div></div></div></section><script>\n\t\tfunction updateMetrics() {\n\t\t\tconst eventSource = new EventSource('/api/metrics/stream');\n\n\t\t\teventSource.onmessage = function (event) {\n\t\t\t\tconst metrics = JSON.parse(event.data);\n\t\t\t\tdocument.getElementById('keypresses').textContent = metrics.TotalKeypresses;\n\t\t\t\tdocument.getElementById('mouseclicks').textContent = metrics.TotalMouseClicks;\n\t\t\t};\n\n\t\t\teventSource.onerror = function (error) {\n\t\t\t\tconsole.error('EventSource failed:', error);\n\t\t\t\teventSource.close();\n\t\t\t};\n\t\t}\n\n\t\tupdateMetrics();\n\t</script></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

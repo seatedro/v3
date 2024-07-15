@@ -80,7 +80,7 @@ templ HomeComponent(userData models.User, recentPosts []models.Post) {
 			for _, post := range recentPosts {
 			<li class="mb-4">
 				<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary no-underline">
-					<div class="flex justify-between items-center relative hover:bg-[#928374]">
+					<div class="flex justify-between items-center relative hover:bg-[#504945]">
 						<span
 							class="after:content-['_._._._._._._._._._._._._._._._._._.'] overflow-hidden whitespace-nowrap text-gray-400 flex-1">
 							{ post.Date.Format("2006-01-02") }
@@ -93,6 +93,41 @@ templ HomeComponent(userData models.User, recentPosts []models.Post) {
 		</ul>
 	</section>
 	}
+	<section>
+		<h2 class="text-2xl font-semibold mb-4">dumb daily stats</h2>
+		<div class="flex space-x-4">
+			<div class="bg-[#504945] text-white p-4 flex flex-col items-center">
+				<div id="keypresses" class="text-xl font-bold transition-all ease-in-out">
+					0
+				</div>
+				<div class="text-sm">keypresses</div>
+			</div>
+			<div class="bg-[#504945] text-white p-4 flex flex-col items-center">
+				<div id="mouseclicks" class="text-xl font-bold transition-all ease-in-out">
+					0
+				</div>
+				<div class="text-sm">mouse clicks</div>
+			</div>
+		</div>
+	</section>
+	<script>
+		function updateMetrics() {
+			const eventSource = new EventSource('/api/metrics/stream');
+
+			eventSource.onmessage = function (event) {
+				const metrics = JSON.parse(event.data);
+				document.getElementById('keypresses').textContent = metrics.TotalKeypresses;
+				document.getElementById('mouseclicks').textContent = metrics.TotalMouseClicks;
+			};
+
+			eventSource.onerror = function (error) {
+				console.error('EventSource failed:', error);
+				eventSource.close();
+			};
+		}
+
+		updateMetrics();
+	</script>
 </div>
 }
 }

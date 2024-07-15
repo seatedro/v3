@@ -17,9 +17,11 @@ type Server struct {
 }
 
 func NewServer() *Server {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file:", err)
+	if os.Getenv("GO_ENV") == "dev" {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file:", err)
+		}
 	}
 
 	sqlDb, err := sql.Open("postgres", os.Getenv("DATABASE_URL"))

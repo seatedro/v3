@@ -51,7 +51,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 			var templ_7745c5c3_Var3 string
 			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(userData.Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 13, Col: 48}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 13, Col: 50}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
@@ -64,7 +64,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 			var templ_7745c5c3_Var4 string
 			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(userData.Location)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 24, Col: 48}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 33, Col: 50}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
 			if templ_7745c5c3_Err != nil {
@@ -77,7 +77,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 			var templ_7745c5c3_Var5 string
 			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(userData.Role)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 38, Col: 44}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 56, Col: 46}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 			if templ_7745c5c3_Err != nil {
@@ -90,7 +90,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 			var templ_7745c5c3_Var6 string
 			templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(userData.Bio)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 40, Col: 32}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 58, Col: 34}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
 			if templ_7745c5c3_Err != nil {
@@ -118,7 +118,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 				templ_7745c5c3_Var8, templ_7745c5c3_Err = templ.JoinStringErrs(
 					work.Company)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 51, Col: 18}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 73, Col: 18}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var8))
 				if templ_7745c5c3_Err != nil {
@@ -131,7 +131,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 				var templ_7745c5c3_Var9 string
 				templ_7745c5c3_Var9, templ_7745c5c3_Err = templ.JoinStringErrs(work.Position)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 54, Col: 45}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 76, Col: 48}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var9))
 				if templ_7745c5c3_Err != nil {
@@ -144,7 +144,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 				var templ_7745c5c3_Var10 string
 				templ_7745c5c3_Var10, templ_7745c5c3_Err = templ.JoinStringErrs(work.Duration)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 55, Col: 45}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 77, Col: 48}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var10))
 				if templ_7745c5c3_Err != nil {
@@ -157,7 +157,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 				var templ_7745c5c3_Var11 string
 				templ_7745c5c3_Var11, templ_7745c5c3_Err = templ.JoinStringErrs(work.Description)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 56, Col: 38}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 78, Col: 41}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var11))
 				if templ_7745c5c3_Err != nil {
@@ -190,7 +190,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 				templ_7745c5c3_Var13, templ_7745c5c3_Err = templ.JoinStringErrs(
 					project.Title)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 68, Col: 19}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 94, Col: 19}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var13))
 				if templ_7745c5c3_Err != nil {
@@ -203,7 +203,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 				var templ_7745c5c3_Var14 string
 				templ_7745c5c3_Var14, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 71, Col: 28}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 97, Col: 31}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var14))
 				if templ_7745c5c3_Err != nil {
@@ -240,7 +240,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 					var templ_7745c5c3_Var16 string
 					templ_7745c5c3_Var16, templ_7745c5c3_Err = templ.JoinStringErrs(post.Date.Format("2006-01-02"))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 86, Col: 39}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 113, Col: 43}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var16))
 					if templ_7745c5c3_Err != nil {
@@ -253,7 +253,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 					var templ_7745c5c3_Var17 string
 					templ_7745c5c3_Var17, templ_7745c5c3_Err = templ.JoinStringErrs(strings.ToLower(post.Title))
 					if templ_7745c5c3_Err != nil {
-						return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 88, Col: 60}
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/templates/home.templ`, Line: 115, Col: 64}
 					}
 					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var17))
 					if templ_7745c5c3_Err != nil {
@@ -269,7 +269,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 					return templ_7745c5c3_Err
 				}
 			}
-			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section><h2 class=\"text-2xl font-semibold mb-4\">dumb daily stats</h2><div class=\"flex space-x-4\"><div class=\"bg-[#504945] text-white p-4 flex flex-col items-center\"><div id=\"keypresses\" class=\"text-xl font-bold transition-all ease-in-out\">0</div><div class=\"text-sm\">keypresses</div></div><div class=\"bg-[#504945] text-white p-4 flex flex-col items-center\"><div id=\"mouseclicks\" class=\"text-xl font-bold transition-all ease-in-out\">0</div><div class=\"text-sm\">mouse clicks</div></div></div></section><script>\n\t\tfunction updateMetrics() {\n\t\t\tconst eventSource = new EventSource('/api/metrics/stream');\n\n\t\t\teventSource.onmessage = function (event) {\n\t\t\t\tconst metrics = JSON.parse(event.data);\n\t\t\t\tdocument.getElementById('keypresses').textContent = metrics.TotalKeypresses;\n\t\t\t\tdocument.getElementById('mouseclicks').textContent = metrics.TotalMouseClicks;\n\t\t\t};\n\n\t\t\teventSource.onerror = function (error) {\n\t\t\t\tconsole.error('EventSource failed:', error);\n\t\t\t\teventSource.close();\n\t\t\t};\n\n\t\t\t// Clean up EventSource when the page is unloaded\n\t\t\tdocument.addEventListener(\"visibilitychange\", () => {\n\t\t\t\tif (document.hidden) {\n\t\t\t\t\teventSource.close();\n\t\t\t\t}\n\t\t\t})\n\t\t}\n\n\t\tupdateMetrics();\n\t</script></div>")
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("<section class=\"my-8\"><h2 class=\"text-2xl font-semibold mb-6 text-[#b8bb26]\">dumb daily stats</h2><div class=\"grid grid-cols-2 gap-4\"><div class=\"bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-center space-x-4 transform transition-all duration-300 ease-in-out\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-8 w-8 text-[#b8bb26] mt-1\"><path d=\"M10 8h.01\"></path> <path d=\"M12 12h.01\"></path> <path d=\"M14 8h.01\"></path> <path d=\"M16 12h.01\"></path> <path d=\"M18 8h.01\"></path> <path d=\"M6 8h.01\"></path> <path d=\"M7 16h10\"></path> <path d=\"M8 12h.01\"></path> <rect width=\"20\" height=\"16\" x=\"2\" y=\"4\" rx=\"2\"></rect></svg><div><div id=\"keypresses\" class=\"text-2xl font-bold text-white transition-all ease-in-out\">0</div><div class=\"text-sm text-gray-300\">keypresses</div></div></div><div class=\"bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-center space-x-4 transform transition-all duration-300 ease-in-out\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-8 w-8 text-[#b8bb26] mt-1\"><path d=\"m9 9 5 12 1.8-5.2L21 14Z\"></path> <path d=\"M7.2 2.2 8 5.1\"></path> <path d=\"m5.1 8-2.9-.8\"></path> <path d=\"M14 4.1 12 6\"></path> <path d=\"m6 12-1.9 2\"></path></svg><div><div id=\"mouseclicks\" class=\"text-2xl font-bold text-white transition-all ease-in-out\">0</div><div class=\"text-sm text-gray-300\">mouse clicks</div></div></div><div class=\"bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-start space-x-4 transform transition-all duration-300 ease-in-out\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-8 w-8 text-[#b8bb26] mt-1\"><rect x=\"5\" y=\"2\" width=\"14\" height=\"20\" rx=\"7\"></rect> <path d=\"M12 6v4\"></path></svg><div class=\"flex-grow\"><div class=\"flex justify-between items-end\"><div><span id=\"mousetravel-feet\" class=\"text-2xl font-bold text-white transition-all ease-in-out\">0</span> <span class=\"text-xs text-gray-400 ml-1\">ft</span></div><div><span id=\"mousetravel-miles\" class=\"text-lg font-semibold text-[#b8bb26] transition-all ease-in-out\">0</span> <span class=\"text-xs text-gray-400 ml-1\">mi</span></div></div><div class=\"text-sm text-gray-300 mb-1\">mouse travel</div></div></div><div class=\"bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-center space-x-4 transform transition-all duration-300 ease-in-out\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"h-8 w-8 text-[#b8bb26] mt-1\"><path d=\"M19 17V5a2 2 0 0 0-2-2H4\"></path> <path d=\"M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3\"></path></svg><div><div id=\"scrollsteps\" class=\"text-2xl font-bold text-white transition-all ease-in-out\">0</div><div class=\"text-sm text-gray-300\">mouse scrolls</div></div></div></div></section><script>\n\t\tfunction animateValue(id, start, end, duration) {\n\t\t\tlet startTimestamp = null;\n\t\t\tconst step = (timestamp) => {\n\t\t\t\tif (!startTimestamp) startTimestamp = timestamp;\n\t\t\t\tconst progress = Math.min((timestamp - startTimestamp) / duration, 1);\n\t\t\t\tconst value = Math.floor(progress * (end - start) + start);\n\t\t\t\tdocument.getElementById(id).textContent = value;\n\t\t\t\tif (progress < 1) {\n\t\t\t\t\twindow.requestAnimationFrame(step);\n\t\t\t\t}\n\t\t\t};\n\t\t\twindow.requestAnimationFrame(step);\n\t\t}\n\n\t\tfunction updateMetrics() {\n\t\t\tconst eventSource = new EventSource('/api/metrics/stream');\n\n\t\t\teventSource.onmessage = function (event) {\n\t\t\t\tconst metrics = JSON.parse(event.data);\n\t\t\t\tconst kp = document.getElementById('keypresses')\n\t\t\t\tconst mc = document.getElementById('mouseclicks')\n\t\t\t\tconst mtft = document.getElementById('mousetravel-feet')\n\t\t\t\tconst mtmi = document.getElementById('mousetravel-miles')\n\t\t\t\tconst ss = document.getElementById('scrollsteps')\n\t\t\t\tanimateValue('keypresses', parseInt(kp.textContent), metrics.TotalKeypresses, 250)\n\t\t\t\tanimateValue('mouseclicks', parseInt(mc.textContent), metrics.TotalMouseClicks, 250)\n\t\t\t\tanimateValue('mousetravel-feet', parseInt(mtft.textContent), Math.round(metrics.TotalMouseTravelIn / 12), 250)\n\t\t\t\tmtmi.textContent = metrics.TotalMouseTravelMi.toFixed(2)\n\t\t\t\tanimateValue('scrollsteps', parseInt(ss.textContent), metrics.TotalScrollSteps, 250)\n\t\t\t};\n\n\t\t\teventSource.onerror = function (error) {\n\t\t\t\tconsole.error('EventSource failed:', error);\n\t\t\t\teventSource.close();\n\t\t\t};\n\n\t\t\t// Clean up EventSource when the page is unloaded\n\t\t\tdocument.addEventListener(\"visibilitychange\", () => {\n\t\t\t\tif (document.hidden) {\n\t\t\t\t\teventSource.close();\n\t\t\t\t}\n\t\t\t})\n\t\t}\n\n\t\tupdateMetrics();\n\t</script></div>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

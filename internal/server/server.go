@@ -17,7 +17,7 @@ type Server struct {
 }
 
 func NewServer() *Server {
-	if os.Getenv("GO_ENV") == "dev" {
+	if os.Getenv("GO_ENV") != "prod" {
 		err := godotenv.Load()
 		if err != nil {
 			log.Fatal("Error loading .env file:", err)

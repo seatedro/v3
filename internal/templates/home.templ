@@ -1,123 +1,288 @@
 package templates
 
 import (
-"github.com/seatedro/v3/internal/models"
-"github.com/seatedro/v3/internal/shared"
-"strings"
+	"github.com/seatedro/v3/internal/models"
+	"github.com/seatedro/v3/internal/shared"
+	"strings"
 )
 
 templ HomeComponent(userData models.User, recentPosts []models.Post) {
-@shared.Layout("Rohit Prakash", userData) {
-<div class="space-y-8">
-	<section class="space-y-4">
-		<h1 class="text-4xl font-bold">{ userData.Name }</h1>
-		<div class="flex flex-row gap-4 items-center">
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-				class="lucide lucide-map-pinned">
-				<path d="M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0"></path>
-				<circle cx="12" cy="8" r="2"></circle>
-				<path
-					d="M8.835 14H5a1 1 0 0 0-.9.7l-2 6c-.1.1-.1.2-.1.3 0 .6.4 1 1 1h18c.6 0 1-.4 1-1 0-.1 0-.2-.1-.3l-2-6a1 1 0 0 0-.9-.7h-3.835">
-				</path>
-			</svg>
-			<p class="text-[#83a598]">{ userData.Location }</p>
-		</div>
-		<div class="flex flex-row gap-4 items-center">
-			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-				stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-				class="lucide lucide-building-2">
-				<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
-				<path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
-				<path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
-				<path d="M10 6h4"></path>
-				<path d="M10 10h4"></path>
-				<path d="M10 14h4"></path>
-				<path d="M10 18h4"></path>
-			</svg>
-			<p class="text-[#83a598]">{ userData.Role }</p>
-		</div>
-		<p class="mt-4">{ userData.Bio }</p>
-	</section>
-	<div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
-		<section>
-			<h2 class="text-2xl font-semibold mb-4">work</h2>
-			for _, work := range userData.Work {
-			<div class="mb-4">
-				<h3 class="text-[#fb4934] text-xl font-semibold">
-					<a class="underline-offset-4 underline" target="_blank"
-						rel="noopener noreferrer" href={ templ.SafeURL(work.Href) }>
-						{
+	@shared.Layout("Rohit Prakash", userData) {
+		<div class="space-y-8">
+			<section class="space-y-4">
+				<h1 class="text-4xl font-bold">{ userData.Name }</h1>
+				<div class="flex flex-row gap-4 items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-map-pinned"
+					>
+						<path d="M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0"></path>
+						<circle cx="12" cy="8" r="2"></circle>
+						<path
+							d="M8.835 14H5a1 1 0 0 0-.9.7l-2 6c-.1.1-.1.2-.1.3 0 .6.4 1 1 1h18c.6 0 1-.4 1-1 0-.1 0-.2-.1-.3l-2-6a1 1 0 0 0-.9-.7h-3.835"
+						></path>
+					</svg>
+					<p class="text-[#83a598]">{ userData.Location }</p>
+				</div>
+				<div class="flex flex-row gap-4 items-center">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-building-2"
+					>
+						<path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path>
+						<path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"></path>
+						<path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"></path>
+						<path d="M10 6h4"></path>
+						<path d="M10 10h4"></path>
+						<path d="M10 14h4"></path>
+						<path d="M10 18h4"></path>
+					</svg>
+					<p class="text-[#83a598]">{ userData.Role }</p>
+				</div>
+				<p class="mt-4">{ userData.Bio }</p>
+			</section>
+			<div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+				<section>
+					<h2 class="text-2xl font-semibold mb-4">work</h2>
+					for _, work := range userData.Work {
+						<div class="mb-4">
+							<h3 class="text-[#fb4934] text-xl font-semibold">
+								<a
+									class="underline-offset-4 underline"
+									target="_blank"
+									rel="noopener noreferrer"
+									href={ templ.SafeURL(work.Href) }
+								>
+									{ 
 						work.Company }
-					</a>
-				</h3>
-				<p class="text-[#83a598]">{ work.Position }</p>
-				<p class="text-[#458588]">{ work.Duration }</p>
-				<p class="mt-2">{ work.Description }</p>
-			</div>
-			}
-		</section>
-		<section>
-			<h2 class="text-2xl font-semibold mb-4">projects</h2>
-			for _, project := range userData.Projects {
-			<div class="mb-4">
-				<h3 class="text-[#fb4934] text-xl font-semibold">
-					<a class="underline-offset-4 underline" target="_blank"
-						rel="noopener noreferrer" href={ templ.SafeURL(project.Href) }>
-						{
+								</a>
+							</h3>
+							<p class="text-[#83a598]">{ work.Position }</p>
+							<p class="text-[#458588]">{ work.Duration }</p>
+							<p class="mt-2">{ work.Description }</p>
+						</div>
+					}
+				</section>
+				<section>
+					<h2 class="text-2xl font-semibold mb-4">projects</h2>
+					for _, project := range userData.Projects {
+						<div class="mb-4">
+							<h3 class="text-[#fb4934] text-xl font-semibold">
+								<a
+									class="underline-offset-4 underline"
+									target="_blank"
+									rel="noopener noreferrer"
+									href={ templ.SafeURL(project.Href) }
+								>
+									{ 
 						project.Title }
-					</a>
-				</h3>
-				<p>{ project.Description }</p>
+								</a>
+							</h3>
+							<p>{ project.Description }</p>
+						</div>
+					}
+				</section>
 			</div>
+			if len(recentPosts) != 0 {
+				<section>
+					<h2 class="text-2xl font-semibold mb-4">recent posts</h2>
+					<ul>
+						for _, post := range recentPosts {
+							<li class="mb-4">
+								<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary no-underline">
+									<div class="flex justify-between items-center relative hover:bg-[#504945]">
+										<span
+											class="after:content-['_._._._._._._._._._._._._._._._._._.'] overflow-hidden whitespace-nowrap text-gray-400 flex-1"
+										>
+											{ post.Date.Format("2006-01-02") }
+										</span>
+										<p class="font-semibold">{ strings.ToLower(post.Title) }</p>
+									</div>
+								</a>
+							</li>
+						}
+					</ul>
+				</section>
 			}
-		</section>
-	</div>
-	if len(recentPosts) != 0 {
-	<section>
-		<h2 class="text-2xl font-semibold mb-4">recent posts</h2>
-		<ul>
-			for _, post := range recentPosts {
-			<li class="mb-4">
-				<a href={ templ.SafeURL("/blog/" + post.Slug) } class="text-primary no-underline">
-					<div class="flex justify-between items-center relative hover:bg-[#504945]">
-						<span
-							class="after:content-['_._._._._._._._._._._._._._._._._._.'] overflow-hidden whitespace-nowrap text-gray-400 flex-1">
-							{ post.Date.Format("2006-01-02") }
-						</span>
-						<p class="font-semibold">{ strings.ToLower(post.Title) }</p>
+			<section class="my-8">
+				<h2 class="text-2xl font-semibold mb-6 text-[#b8bb26]">dumb daily stats</h2>
+				<div class="grid grid-cols-2 gap-4">
+					<div
+						class="bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-center space-x-4 transform transition-all duration-300 ease-in-out"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-8 w-8 text-[#b8bb26] mt-1"
+						>
+							<path d="M10 8h.01"></path>
+							<path d="M12 12h.01"></path>
+							<path d="M14 8h.01"></path>
+							<path d="M16 12h.01"></path>
+							<path d="M18 8h.01"></path>
+							<path d="M6 8h.01"></path>
+							<path d="M7 16h10"></path>
+							<path d="M8 12h.01"></path>
+							<rect width="20" height="16" x="2" y="4" rx="2"></rect>
+						</svg>
+						<div>
+							<div
+								id="keypresses"
+								class="text-2xl font-bold text-white transition-all ease-in-out"
+							>0</div>
+							<div class="text-sm text-gray-300">keypresses</div>
+						</div>
 					</div>
-				</a>
-			</li>
-			}
-		</ul>
-	</section>
-	}
-	<section>
-		<h2 class="text-2xl font-semibold mb-4">dumb daily stats</h2>
-		<div class="flex space-x-4">
-			<div class="bg-[#504945] text-white p-4 flex flex-col items-center">
-				<div id="keypresses" class="text-xl font-bold transition-all ease-in-out">
-					0
+					<div
+						class="bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-center space-x-4 transform transition-all duration-300 ease-in-out"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-8 w-8 text-[#b8bb26] mt-1"
+						>
+							<path d="m9 9 5 12 1.8-5.2L21 14Z"></path>
+							<path d="M7.2 2.2 8 5.1"></path>
+							<path d="m5.1 8-2.9-.8"></path>
+							<path d="M14 4.1 12 6"></path>
+							<path d="m6 12-1.9 2"></path>
+						</svg>
+						<div>
+							<div
+								id="mouseclicks"
+								class="text-2xl font-bold text-white transition-all ease-in-out"
+							>0</div>
+							<div class="text-sm text-gray-300">mouse clicks</div>
+						</div>
+					</div>
+					<div
+						class="bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-start space-x-4 transform transition-all duration-300 ease-in-out"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-8 w-8 text-[#b8bb26] mt-1"
+						>
+							<rect x="5" y="2" width="14" height="20" rx="7"></rect>
+							<path d="M12 6v4"></path>
+						</svg>
+						<div class="flex-grow">
+							<div class="flex justify-between items-end">
+								<div>
+									<span
+										id="mousetravel-feet"
+										class="text-2xl font-bold text-white transition-all ease-in-out"
+									>0</span>
+									<span class="text-xs text-gray-400 ml-1">ft</span>
+								</div>
+								<div>
+									<span
+										id="mousetravel-miles"
+										class="text-lg font-semibold text-[#b8bb26] transition-all ease-in-out"
+									>0</span>
+									<span class="text-xs text-gray-400 ml-1">mi</span>
+								</div>
+							</div>
+							<div class="text-sm text-gray-300 mb-1">mouse travel</div>
+						</div>
+					</div>
+					<div
+						class="bg-gradient-to-br from-[#504945] to-[#3c3836] rounded-lg p-4 flex items-center space-x-4 transform transition-all duration-300 ease-in-out"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="h-8 w-8 text-[#b8bb26] mt-1"
+						>
+							<path d="M19 17V5a2 2 0 0 0-2-2H4"></path>
+							<path
+								d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"
+							></path>
+						</svg>
+						<div>
+							<div
+								id="scrollsteps"
+								class="text-2xl font-bold text-white transition-all ease-in-out"
+							>0</div>
+							<div class="text-sm text-gray-300">mouse scrolls</div>
+						</div>
+					</div>
 				</div>
-				<div class="text-sm">keypresses</div>
-			</div>
-			<div class="bg-[#504945] text-white p-4 flex flex-col items-center">
-				<div id="mouseclicks" class="text-xl font-bold transition-all ease-in-out">
-					0
-				</div>
-				<div class="text-sm">mouse clicks</div>
-			</div>
-		</div>
-	</section>
-	<script>
+			</section>
+			<script>
+		function animateValue(id, start, end, duration) {
+			let startTimestamp = null;
+			const step = (timestamp) => {
+				if (!startTimestamp) startTimestamp = timestamp;
+				const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+				const value = Math.floor(progress * (end - start) + start);
+				document.getElementById(id).textContent = value;
+				if (progress < 1) {
+					window.requestAnimationFrame(step);
+				}
+			};
+			window.requestAnimationFrame(step);
+		}
+
 		function updateMetrics() {
 			const eventSource = new EventSource('/api/metrics/stream');
 
 			eventSource.onmessage = function (event) {
 				const metrics = JSON.parse(event.data);
-				document.getElementById('keypresses').textContent = metrics.TotalKeypresses;
-				document.getElementById('mouseclicks').textContent = metrics.TotalMouseClicks;
+				const kp = document.getElementById('keypresses')
+				const mc = document.getElementById('mouseclicks')
+				const mtft = document.getElementById('mousetravel-feet')
+				const mtmi = document.getElementById('mousetravel-miles')
+				const ss = document.getElementById('scrollsteps')
+				animateValue('keypresses', parseInt(kp.textContent), metrics.TotalKeypresses, 250)
+				animateValue('mouseclicks', parseInt(mc.textContent), metrics.TotalMouseClicks, 250)
+				animateValue('mousetravel-feet', parseInt(mtft.textContent), Math.round(metrics.TotalMouseTravelIn / 12), 250)
+				mtmi.textContent = metrics.TotalMouseTravelMi.toFixed(2)
+				animateValue('scrollsteps', parseInt(ss.textContent), metrics.TotalScrollSteps, 250)
 			};
 
 			eventSource.onerror = function (error) {
@@ -135,6 +300,6 @@ templ HomeComponent(userData models.User, recentPosts []models.Post) {
 
 		updateMetrics();
 	</script>
-</div>
-}
+		</div>
+	}
 }

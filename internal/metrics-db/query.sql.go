@@ -14,7 +14,10 @@ const getLatestMetrics = `-- name: GetLatestMetrics :one
 SELECT 
     DATE(timestamp) as date,
     SUM(keypresses) as total_keypresses,
-    SUM(mouse_clicks) as total_mouse_clicks
+    SUM(mouse_clicks) as total_mouse_clicks,
+    CAST(SUM(mouse_distance_in) AS DOUBLE PRECISION) as total_mouse_travel_in,
+    CAST(SUM(mouse_distance_mi) AS DOUBLE PRECISION) as total_mouse_travel_mi,
+    SUM(scroll_steps) as total_scroll_steps
 FROM metrics
 WHERE DATE(timestamp) = (
     SELECT DATE(timestamp)
@@ -26,14 +29,24 @@ GROUP BY DATE(timestamp)
 `
 
 type GetLatestMetricsRow struct {
-	Date             time.Time
-	TotalKeypresses  int64
-	TotalMouseClicks int64
+	Date               time.Time
+	TotalKeypresses    int64
+	TotalMouseClicks   int64
+	TotalMouseTravelIn float64
+	TotalMouseTravelMi float64
+	TotalScrollSteps   int64
 }
 
 func (q *Queries) GetLatestMetrics(ctx context.Context) (GetLatestMetricsRow, error) {
 	row := q.db.QueryRowContext(ctx, getLatestMetrics)
 	var i GetLatestMetricsRow
-	err := row.Scan(&i.Date, &i.TotalKeypresses, &i.TotalMouseClicks)
+	err := row.Scan(
+		&i.Date,
+		&i.TotalKeypresses,
+		&i.TotalMouseClicks,
+		&i.TotalMouseTravelIn,
+		&i.TotalMouseTravelMi,
+		&i.TotalScrollSteps,
+	)
 	return i, err
 }

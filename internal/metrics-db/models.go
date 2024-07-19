@@ -9,8 +9,11 @@ import (
 )
 
 type Metric struct {
-	ID          int32
-	Keypresses  int32
-	MouseClicks int32
-	Timestamp   time.Time
+	ID              int32
+	Keypresses      int32
+	MouseClicks     int32
+	MouseDistanceIn float64
+	MouseDistanceMi float64
+	ScrollSteps     int32
+	Timestamp       time.Time
 }

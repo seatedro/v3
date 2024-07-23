@@ -2,7 +2,7 @@
 	"name": "rohit prakash",
 	"location": "nyc, usa",
 	"role": "sre intern @ nbcuniversal",
-	"bio": "currently a student (mscs @ nyu). i love learning new things and building with it. i love programming languages and neovim. currently trying to beat the final boss in elden ring but failing miserably.",
+	"bio": "currently a student (mscs @ nyu). i love learning new things and building with it. i love programming languages and neovim. I HAVE FINALLY BEAT THE ELDEN RING DLC!!",
 	"github": "https://github.com/seatedro",
 	"twitter": "https://twitter.com/seatedro",
 	"linkedin": "https://linkedin.com/in/rohitp934",
@@ -34,9 +34,9 @@
 			"description": "my version of the monkeylang interpreter in rust & go."
 		},
 		{
-			"title": "coding.rs",
-			"href": "https://github.com/seatedro/coding.rs",
-			"description": "juiced up online judge written in rust (btw)."
+			"title": "kl",
+			"href": "https://github.com/seatedro/kawaiilogger",
+			"description": "personal silly metrics collection service in go."
 		},
 		{
 			"title": "all projects →",

@@ -16,4 +16,6 @@ require (
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/dlclark/regexp2 v1.11.0 // indirect
+	github.com/lithammer/fuzzysearch v1.1.8 // indirect
+	golang.org/x/text v0.9.0 // indirect
 )

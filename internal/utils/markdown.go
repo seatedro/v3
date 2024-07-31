@@ -10,6 +10,7 @@ import (
 
 	"github.com/adrg/frontmatter"
 	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
+	"github.com/lithammer/fuzzysearch/fuzzy"
 	"github.com/seatedro/v3/internal/models"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting/v2"
@@ -80,6 +81,26 @@ func GetAllPosts() ([]models.Post, error) {
 	}
 
 	return posts, nil
+}
+
+func SearchBlogPosts(q string, limit int) ([]models.Post, error) {
+	posts, err := GetAllPosts()
+	if err != nil {
+		return nil, err
+	}
+
+	filteredPosts := make([]models.Post, 0)
+	for _, post := range posts {
+		if fuzzy.Match(strings.ToLower(q), strings.ToLower(post.Title)) {
+			filteredPosts = append(filteredPosts, post)
+		}
+	}
+
+	if len(filteredPosts) > limit {
+		filteredPosts = filteredPosts[:limit]
+	}
+
+	return filteredPosts, nil
 }
 
 func GetPostBySlug(slug string) (models.Post, error) {

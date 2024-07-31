@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/seatedro/v3/internal/models"
@@ -126,4 +127,64 @@ func (s *Server) MetricsStreamHandler(w http.ResponseWriter, r *http.Request) {
 			streamMetrics()
 		}
 	}
+}
+
+func (s *Server) BlogPostsHandler(w http.ResponseWriter, r *http.Request) {
+	limit := r.URL.Query().Get("limit")
+	if limit == "" {
+		limit = "3"
+	}
+
+	limitInt, err := strconv.Atoi(limit)
+	if err != nil {
+		limitInt = 3
+	}
+
+	posts, err := utils.GetRecentPosts(limitInt)
+	if err != nil {
+		http.Error(w, "Error getting posts", http.StatusInternalServerError)
+		return
+	}
+
+	data, err := json.Marshal(posts)
+	if err != nil {
+		http.Error(w, "Error converting posts to JSON", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(data)
+}
+
+func (s *Server) SearchBlogPostsHandler(w http.ResponseWriter, r *http.Request) {
+	q := r.URL.Query().Get("q")
+	if q == "" {
+		http.Error(w, "Query parameter not provided", http.StatusBadRequest)
+		return
+	}
+
+	limit := r.URL.Query().Get("limit")
+	if limit == "" {
+		limit = "3"
+	}
+
+	limitInt, err := strconv.Atoi(limit)
+	if err != nil {
+		limitInt = 3
+	}
+
+	posts, err := utils.SearchBlogPosts(q, limitInt)
+	if err != nil {
+		http.Error(w, "Error getting posts", http.StatusInternalServerError)
+		return
+	}
+
+	data, err := json.Marshal(posts)
+	if err != nil {
+		http.Error(w, "Error converting posts to JSON", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(data)
 }

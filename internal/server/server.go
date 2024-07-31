@@ -50,6 +50,8 @@ func NewServer() *Server {
 	http.HandleFunc("/blog", newServer.BlogHandler)
 	http.HandleFunc("/blog/", newServer.BlogPostHandler)
 	http.HandleFunc("/api/metrics/stream", newServer.MetricsStreamHandler)
+	http.HandleFunc("/api/blog-posts", newServer.BlogPostsHandler)
+	http.HandleFunc("/api/blog-posts/search", newServer.SearchBlogPostsHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	log.Println("Server starting on :8080")

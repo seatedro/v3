@@ -1,26 +1,26 @@
 package templates
 
 import (
-"fmt"
-"github.com/seatedro/v3/internal/models"
-"github.com/seatedro/v3/internal/shared"
+	"fmt"
+	"github.com/seatedro/v3/internal/models"
+	"github.com/seatedro/v3/internal/shared"
 )
 
 templ BlogPost(user models.User, post models.Post) {
-@shared.Layout(fmt.Sprintf("%s | %s", post.Title, user.Name), user) {
-<article class="max-w-2xl mx-auto">
-	<header class="mb-8">
-		<h1 class="text-4xl font-bold mb-2">{ post.Title }</h1>
-		<p class="text-gray-400 mb-4">{ post.Date.Format("January 2, 2006") }</p>
-		<div class="flex flex-wrap gap-2 mb-4">
-			for _, tag := range post.Tags {
-			<span class="bg-gray-800 text-gray-200 px-2 py-1 rounded-full text-sm">{ tag }</span>
-			}
-		</div>
-	</header>
-	<div class="prose prose-invert max-w-none">
-		@templ.Raw(post.Content)
-	</div>
-</article>
-}
+	@shared.Layout(fmt.Sprintf("%s | %s", post.Title, user.Name), user) {
+		<article class="max-w-2xl mx-auto">
+			<header class="mb-8">
+				<h1 class="text-4xl font-bold mb-2">{ post.Title }</h1>
+				<p class="text-gray-400 mb-4">{ post.Date.Format("January 2, 2006") }</p>
+				<div class="flex flex-wrap gap-2 mb-4">
+					for _, tag := range post.Tags {
+						<span class="bg-gray-800 text-gray-200 px-2 py-1 rounded-full text-sm">{ tag }</span>
+					}
+				</div>
+			</header>
+			<div class="prose prose-invert max-w-none">
+				@templ.Raw(post.Content)
+			</div>
+		</article>
+	}
 }

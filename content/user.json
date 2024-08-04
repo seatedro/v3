@@ -1,8 +1,8 @@
 {
 	"name": "rohit prakash",
 	"location": "nyc, usa",
-	"role": "sre intern @ nbcuniversal",
-	"bio": "currently a student (mscs @ nyu). i love learning new things and building with it. i love programming languages and neovim. I HAVE FINALLY BEAT THE ELDEN RING DLC!!",
+	"role": "swe intern @ nbcuniversal",
+	"bio": "currently a student (mscs @ nyu). i love learning new things and building with it. i love programming languages and neovim. zigging rn.",
 	"github": "https://github.com/seatedro",
 	"twitter": "https://twitter.com/seatedro",
 	"linkedin": "https://linkedin.com/in/rohitp934",
@@ -15,14 +15,18 @@
 			"description": "shipped go services to prod that collect metrics for aws services. improved error handling and fault tolerance. built grafana dashboards and closed jira tickets."
 		},
 		{
-			"company": "HiringTek",
-			"href": "https://examstek.com",
+			"company": "[startup]",
 			"position": "swe",
 			"duration": "(aug '21 - jun '23)",
 			"description": "built an e2e coding platform for online interviews. overhauled performance. improved dx with sota dev tooling."
 		}
 	],
 	"projects": [
+		{
+			"title": "readless",
+			"href": "https://github.com/seatedro/readless",
+			"description": "chrome extension that summarizes selected text on a website."
+		},
 		{
 			"title": "guam",
 			"href": "https://github.com/seatedro/guam",

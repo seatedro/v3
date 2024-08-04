@@ -63,15 +63,19 @@ templ HomeComponent(userData models.User, recentPosts []models.Post) {
 					for _, work := range userData.Work {
 						<div class="mb-4">
 							<h3 class="text-[#fb4934] text-xl font-semibold">
-								<a
-									class="underline-offset-4 underline"
-									target="_blank"
-									rel="noopener noreferrer"
-									href={ templ.SafeURL(work.Href) }
-								>
-									{ 
+								if work.Href != "" {
+									<a
+										class="underline-offset-4 underline"
+										target="_blank"
+										rel="noopener noreferrer"
+										href={ templ.SafeURL(work.Href) }
+									>
+										{ 
 						work.Company }
-								</a>
+									</a>
+								} else {
+									{ work.Company }
+								}
 							</h3>
 							<p class="text-[#83a598]">{ work.Position }</p>
 							<p class="text-[#458588]">{ work.Duration }</p>

@@ -25,7 +25,7 @@ templ DailyLogComponent(userData models.User, log []models.Log) {
 							>
 								{ item.Date }
 							</span>
-							<p class="font-semibold">{ strings.ToLower(item.Activity) }</p>
+							<p class="font-semibold truncate">{ strings.ToLower(item.Activity) }</p>
 						</div>
 					</a>
 				</li>

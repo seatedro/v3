@@ -49,13 +49,15 @@ func NewServer() *Server {
 	})
 	http.HandleFunc("/blog", newServer.BlogHandler)
 	http.HandleFunc("/blog/", newServer.BlogPostHandler)
+	http.HandleFunc("/kino", newServer.KinoTechHandler)
+	http.HandleFunc("/log", newServer.DailyLogHandler)
 	http.HandleFunc("/api/metrics/stream", newServer.MetricsStreamHandler)
 	http.HandleFunc("/api/blog-posts", newServer.BlogPostsHandler)
 	http.HandleFunc("/api/blog-posts/search", newServer.SearchBlogPostsHandler)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	log.Println("Server starting on :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 
 	return newServer
 

@@ -1,0 +1,22 @@
+[
+	{
+		"name": "neovim",
+		"description": "the lord's favorite editor"
+	},
+	{
+		"name": "tmux",
+		"description": "who needs windows anyway"
+	},
+	{
+		"name": "kitty",
+		"description": "best terminal emulator i have used"
+	},
+	{
+		"name": "bun",
+		"description": "only js runtime i use"
+	},
+	{
+		"name": "go/zig/rust/ts/python",
+		"description": "only languages i use"
+	}
+]

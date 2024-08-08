@@ -1,0 +1,23 @@
+package templates
+
+import (
+	"github.com/seatedro/v3/internal/models"
+	"github.com/seatedro/v3/internal/shared"
+)
+
+templ KinoComponent(userData models.User, kinoTech []models.KinoTech) {
+	@shared.Layout("kino tech | "+userData.Name, userData) {
+		<h1 class="text-4xl font-bold">kino tech</h1>
+		<p class="text-lg font-semibold mb-4 italic text-[#83a598]">that i use</p>
+		<section class="space-y-4">
+			for _, kinoTech := range kinoTech {
+				<div class="mb-4">
+					<h3 class="text-[#fb4934] text-xl font-semibold">
+						{ kinoTech.Name }
+					</h3>
+					<p class="text-[#83a598]">{ kinoTech.Description }</p>
+				</div>
+			}
+		</section>
+	}
+}

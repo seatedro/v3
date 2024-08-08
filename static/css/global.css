@@ -985,6 +985,10 @@ a {
   text-align: left;
 }
 
+.font-mono {
+  font-family: GeistMono, monospace;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1021,6 +1025,10 @@ a {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .text-\[\#458588\] {

@@ -2,11 +2,13 @@ package utils
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
+	"time"
 
 	"github.com/adrg/frontmatter"
 	chromahtml "github.com/alecthomas/chroma/v2/formatters/html"
@@ -132,4 +134,67 @@ func generateSlug(title string) string {
 	}, slug)
 
 	return slug
+}
+
+func GetUserData() (models.User, error) {
+	userData, err := os.ReadFile("content/user.json")
+	if err != nil {
+		return models.User{}, err
+	}
+
+	var user models.User
+	err = json.Unmarshal(userData, &user)
+	if err != nil {
+		return models.User{}, err
+	}
+
+	return user, nil
+}
+
+func GetKinoTech() ([]models.KinoTech, error) {
+	kinoTech, err := os.ReadFile("content/kino.json")
+	if err != nil {
+		return []models.KinoTech{}, err
+	}
+
+	var kino []models.KinoTech
+	err = json.Unmarshal(kinoTech, &kino)
+	if err != nil {
+		return []models.KinoTech{}, err
+	}
+
+	return kino, nil
+}
+
+func GetDailyLog() ([]models.Log, error) {
+	data, err := os.ReadFile("content/log.json")
+	if err != nil {
+		return []models.Log{}, err
+	}
+
+	var log []models.Log
+	err = json.Unmarshal(data, &log)
+	if err != nil {
+		fmt.Println(err)
+		return []models.Log{}, err
+	}
+
+	sort.Slice(log, func(i, j int) bool {
+		date1, err := time.Parse("2006-01-02", log[i].Date)
+		if err != nil {
+			return false
+		}
+		date2, err := time.Parse("2006-01-02", log[j].Date)
+		if err != nil {
+			return false
+		}
+
+		return date1.After(date2)
+	})
+
+	if len(log) > 10 {
+		log = log[:10]
+	}
+
+	return log, nil
 }

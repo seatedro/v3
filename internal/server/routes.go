@@ -188,3 +188,39 @@ func (s *Server) SearchBlogPostsHandler(w http.ResponseWriter, r *http.Request) 
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(data)
 }
+
+func (s *Server) KinoTechHandler(w http.ResponseWriter, r *http.Request) {
+	user, err := utils.GetUserData()
+	if err != nil {
+		http.Error(w, "Error parsing user data", http.StatusInternalServerError)
+		return
+	}
+
+	kinoTech, err := utils.GetKinoTech()
+	if err != nil {
+		http.Error(w, "Error getting KinoTech", http.StatusInternalServerError)
+		return
+	}
+
+	if err := templates.KinoComponent(user, kinoTech).Render(r.Context(), w); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}
+
+func (s *Server) DailyLogHandler(w http.ResponseWriter, r *http.Request) {
+	user, err := utils.GetUserData()
+	if err != nil {
+		http.Error(w, "Error parsing user data", http.StatusInternalServerError)
+		return
+	}
+
+	log, err := utils.GetDailyLog()
+	if err != nil {
+		http.Error(w, "Error getting DailyLog", http.StatusInternalServerError)
+		return
+	}
+
+	if err := templates.DailyLogComponent(user, log).Render(r.Context(), w); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}

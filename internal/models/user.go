@@ -7,7 +7,6 @@ type User struct {
 	Bio      string      `json:"bio"`
 	Github   string      `json:"github"`
 	Twitter  string      `json:"twitter"`
-	Linkedin string      `json:"linkedin"`
 	Work     []WorkEx    `json:"work"`
 	Projects []ProjectEx `json:"projects"`
 }

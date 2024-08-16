@@ -1,77 +1,78 @@
 package shared
 
 import (
-"fmt"
-"github.com/seatedro/v3/internal/models"
+	"fmt"
+	"github.com/seatedro/v3/internal/models"
 )
 
 templ Layout(title string, user models.User, ogImage string) {
-<!DOCTYPE html>
-<html lang="en" class="h-full">
-
-<head>
-	<meta charset="UTF-8" />
-	<title>{ title }</title>
-	<link rel="icon" type="image/x-icon" href="/static/favicon.ico" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="robots" content="index, follow" />
-	<meta name="revisit-after" content="7 days" />
-	<meta name="language" content="English" />
-	<link rel="stylesheet" href="/static/css/styles.css" />
-	<link rel="stylesheet" href="/static/css/global.css" />
-	<!-- Open Graph -->
-	<meta property="og:title" content={ title } />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://seated.ro" />
-	<meta property="og:image" content={ ogImage } />
-	<meta property="og:description" content="swe by day, swe by night." />
-	<meta property="og:locale" content="en_US" />
-	<meta property="og:site_name" content="seated.ro" />
-	<!-- Twitter -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@seatedro" />
-	<meta name="twitter:creator" content="@seatedro" />
-	<meta name="twitter:title" content={ title } />
-	<meta name="twitter:description" content="swe by day, swe by night." />
-	<meta name="twitter:image" content={ fmt.Sprintf("https://seated.ro%s", ogImage) } />
-</head>
-
-<body class="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto text-[#fbf1c7] bg-[#282828]">
-	<main class="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-		<header class="py-6">
-			<nav class="container mx-auto px-4 py-2 flex justify-between">
-				<ul class="flex space-x-4">
-					<li><a href="/" class="text-primary hover:underline">home</a></li>
-					<li><a href="/blog" class="text-primary hover:underline">blog</a></li>
-					<li><a href="/kino" class="text-primary hover:underline">kino</a></li>
-					<li><a href="/log" class="text-primary hover:underline">log</a></li>
-				</ul>
-				<p class="text-[#ebdbb2] text-sm">
-					<kbd class="px-2 py-1 bg-[#504945] text-[#b8bb26] rounded font-mono">⌘</kbd>
-					<kbd class="px-2 py-1 bg-[#504945] text-[#b8bb26] rounded font-mono">K</kbd>
-				</p>
-			</nav>
-		</header>
-		<main class="container mx-auto px-4 flex-grow">
-			{ children... }
-		</main>
-		@Cmdk()
-		<footer class="py-6 text-left">
-			<nav class="container mx-auto px-4 flex">
-				<ul class="flex space-x-4">
-					<li>
-						<a href={ templ.SafeURL(user.Github) }
-							class="text-primary hover:underline">github</a>
-					</li>
-					<li>
-						<a href={ templ.SafeURL(user.Twitter) }
-							class="text-primary hover:underline">x/twtr</a>
-					</li>
-				</ul>
-			</nav>
-		</footer>
-	</main>
-</body>
-
-</html>
+	<!DOCTYPE html>
+	<html lang="en" class="h-full">
+		<head>
+			<meta charset="UTF-8"/>
+			<title>{ title }</title>
+			<link rel="icon" type="image/x-icon" href="/static/favicon.ico"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<meta name="robots" content="index, follow"/>
+			<meta name="revisit-after" content="7 days"/>
+			<meta name="language" content="English"/>
+			<link rel="stylesheet" href="/static/css/styles.css"/>
+			<link rel="stylesheet" href="/static/css/global.css"/>
+			<!-- Open Graph -->
+			<meta property="og:title" content={ title }/>
+			<meta property="og:type" content="website"/>
+			<meta property="og:url" content="https://seated.ro"/>
+			<meta property="og:image" content={ fmt.Sprintf("https://seated.ro%s", ogImage) }/>
+			<meta property="og:description" content="swe by day, swe by night."/>
+			<meta property="og:locale" content="en_US"/>
+			<meta property="og:site_name" content="seated.ro"/>
+			<!-- Twitter -->
+			<meta name="twitter:card" content="summary_large_image"/>
+			<meta name="twitter:site" content="@seatedro"/>
+			<meta name="twitter:creator" content="@seatedro"/>
+			<meta name="twitter:title" content={ title }/>
+			<meta name="twitter:description" content="swe by day, swe by night."/>
+			<meta name="twitter:image" content={ fmt.Sprintf("https://seated.ro%s", ogImage) }/>
+		</head>
+		<body class="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto text-[#fbf1c7] bg-[#282828]">
+			<main class="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+				<header class="py-6">
+					<nav class="container mx-auto px-4 py-2 flex justify-between">
+						<ul class="flex space-x-4">
+							<li><a href="/" class="text-primary hover:underline">home</a></li>
+							<li><a href="/blog" class="text-primary hover:underline">blog</a></li>
+							<li><a href="/kino" class="text-primary hover:underline">kino</a></li>
+							<li><a href="/log" class="text-primary hover:underline">log</a></li>
+						</ul>
+						<p class="text-[#ebdbb2] text-sm">
+							<kbd class="px-2 py-1 bg-[#504945] text-[#b8bb26] rounded font-mono">⌘</kbd>
+							<kbd class="px-2 py-1 bg-[#504945] text-[#b8bb26] rounded font-mono">K</kbd>
+						</p>
+					</nav>
+				</header>
+				<main class="container mx-auto px-4 flex-grow">
+					{ children... }
+				</main>
+				@Cmdk()
+				<footer class="py-6 text-left">
+					<nav class="container mx-auto px-4 flex">
+						<ul class="flex space-x-4">
+							<li>
+								<a
+									href={ templ.SafeURL(user.Github) }
+									class="text-primary hover:underline"
+								>github</a>
+							</li>
+							<li>
+								<a
+									href={ templ.SafeURL(user.Twitter) }
+									class="text-primary hover:underline"
+								>x/twtr</a>
+							</li>
+						</ul>
+					</nav>
+				</footer>
+			</main>
+		</body>
+	</html>
 }

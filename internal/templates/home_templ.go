@@ -253,7 +253,7 @@ func HomeComponent(userData models.User, recentPosts []models.Post) templ.Compon
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}
-					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-primary no-underline\"><div class=\"flex justify-between items-center relative hover:bg-[#504945]\"><span class=\"after:content-[&#39;_._._._._._._._._._._._._._._._._._.&#39;] overflow-hidden whitespace-nowrap text-gray-400 flex-1\">")
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("\" class=\"text-primary no-underline\"><div class=\"flex justify-between items-center relative hover:bg-[#504945]\"><span class=\"after:content-[&#39;_._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._._.&#39;] overflow-hidden whitespace-nowrap text-gray-400 flex-1\">")
 					if templ_7745c5c3_Err != nil {
 						return templ_7745c5c3_Err
 					}

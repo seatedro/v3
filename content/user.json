@@ -37,9 +37,9 @@
 			"description": "my version of the monkeylang interpreter in rust & go."
 		},
 		{
-			"title": "kl",
-			"href": "https://github.com/seatedro/kawaiilogger",
-			"description": "personal silly metrics collection service in go."
+			"title": "steroids.zig",
+			"href": "https://roids.seated.ro",
+			"description": "an asteroids clone in zig using raylib."
 		},
 		{
 			"title": "all projects →",

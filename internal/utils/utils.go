@@ -16,6 +16,7 @@ import (
 	"github.com/seatedro/v3/internal/models"
 	"github.com/yuin/goldmark"
 	highlighting "github.com/yuin/goldmark-highlighting/v2"
+	"github.com/yuin/goldmark/renderer/html"
 	"gopkg.in/yaml.v2"
 )
 
@@ -66,9 +67,13 @@ func GetAllPosts() ([]models.Post, error) {
 		markdown := goldmark.New(
 			goldmark.WithExtensions(
 				highlighting.NewHighlighting(
-					highlighting.WithStyle("catppuccin-mocha"),
+					highlighting.WithStyle("onedark"),
 					highlighting.WithFormatOptions(chromahtml.WithLineNumbers(true)),
 				),
+			),
+			goldmark.WithRendererOptions(
+				html.WithHardWraps(),
+				html.WithUnsafe(),
 			),
 		)
 		if err := markdown.Convert(rest, &buf); err != nil {
@@ -77,7 +82,8 @@ func GetAllPosts() ([]models.Post, error) {
 		post.Content = buf.String()
 
 		// Generate a slug from the title
-		post.Slug = generateSlug(post.Title)
+		fileNameWithoutExtension := strings.TrimSuffix(file.Name(), filepath.Ext(file.Name()))
+		post.Slug = generateSlug(fileNameWithoutExtension)
 
 		posts = append(posts, post)
 	}

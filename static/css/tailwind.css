@@ -13,7 +13,7 @@
     @apply text-[#98971a] text-2xl my-2
   }
   h3 {
-    @apply text-[#8ec07c] text-lg my-2
+    @apply text-[#8ec07c] text-xl my-2
   }
   code, pre {
     white-space : pre-wrap !important;
@@ -21,10 +21,25 @@
   }
   pre {
     white-space: pre;  /* Keep the default white-space behavior */
-    overflow: auto;  /* Add scrollbars if the content overflows */
+    overflow: hidden;  /* Add scrollbars if the content overflows */
     max-width: 100%;  /* Ensure the pre block doesn't exceed the container's width */
+  }
+  pre {
+    @apply py-1
   }
   a {
     @apply underline underline-offset-2
+  }
+  a {
+    cursor: pointer !important;
+  }
+  blockquote {
+    @apply p-4 my-4 border-s-4 bg-[#3c3836] text-[#ebdbb2] rounded-md border-[#504945]
+  }
+  blockquote p {
+    @apply text-lg italic font-medium leading-relaxed
+  }
+  code {
+    @apply bg-[#3c3836] text-red-500 p-1 rounded-md
   }
 }

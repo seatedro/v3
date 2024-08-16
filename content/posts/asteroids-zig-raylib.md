@@ -13,7 +13,7 @@ title: a weekend love story - raylib/zig
 
 ### Zig Psyop
 
-Before this weekend, I was a plebeian who used JavaScript for 80% of my tasks. Now I am an esoteric plebeian who has used zig once. Anyway, I decided to give zig a shot and try to build a game with it. It was between sokol and raylib, I went with raylib.
+Before this weekend, I was a plebeian who used JavaScript for 80% of my tasks. Now I am an esoteric plebeian who has used zig once. Anyway, I decided to give zig a shot and try to build a game with it. There was really only two libraries I wanted to learn (sokol and raylib), I went with raylib.
 <br/>
 
 ### Initial References
@@ -33,7 +33,11 @@ I used [zvm](https://github.com/tristanisham/zvm) to make life easier mangaging 
 
 Follow this [part](https://github.com/Not-Nik/raylib-zig#installation) of the docs to install raylib-zig. Do this inside your game directory. This adds raylib-zig as a dependency to our project. You can check the `build.zig.zon` file to verify.
 
-Now the most important part if you want to compile your game for the web with emscripten.
+<br/>
+
+Now the most important part if you want to compile your game for the web with emscripten. *IF YOU'RE NOT BUILDING FOR THE WEB, PLEASE SKIP*.
+
+<br/>
 
 Install `emsdk` as mentioned here: [emscripten installation guide](https://emscripten.org/docs/getting_started/downloads.html) and make sure to do the `source ./emsdk_env.sh` command.
 
@@ -116,10 +120,13 @@ pub fn build(b: *std.Build) !void {
         const link_step = try rlz.emcc.linkWithEmscripten(b, &[_]*std.Build.Step.Compile{ exe_lib, raylib_artifact });
 
         // Use the custom HTML template
+        // This will be the index.html where the game is rendered.
+        // You can find an example in my repository.
         link_step.addArg("--shell-file");
         link_step.addArg("shell.html");
 
         // Embed the assets directory
+        // This generates an index.data file which is neede for the game to run.
         link_step.addArg("--preload-file");
         link_step.addArg("assets");
 
@@ -215,7 +222,8 @@ state.last_bloop = state.bloop;
 
 <br/>
 
-This code is for deciding when to play the low/high bloop sound. It increases in intensity the longer a player is alive. Makes it feel like the game is getting harder. pretty cool! Also avoided for loops with bit shifting. absolutely unnecessary. but it's cool.
+This code is for deciding when to play the low/high bloop sound. It increases in intensity the longer a player is alive. Makes it feel like the game is getting harder. Pretty cool!
+Also avoided for loops with bit shifting. absolutely unnecessary. But I did it anyway.
 
 ### Memory management
 
@@ -257,9 +265,10 @@ emrun ./zig-out/htmlout/index.html
 
 <br/>
 
-Now, as to why we used `v0.12.0` instead, for some reason the build command above fails for the emscripten target with `v0.13.0` as mentioned in this open [issue](https://github.com/Not-Nik/raylib-zig/issues/108).
+Now, as to why we used `v0.12.0`. For some reason the build command above fails for the emscripten target with `v0.13.0` as mentioned in this open [issue](https://github.com/Not-Nik/raylib-zig/issues/108). If someone can figure out why, please mention it in the issue!
 
 <br/>
+
 You can drop everything in the `zig-out/htmlout` folder and host it wherever.
 
 ### Fin!
@@ -267,3 +276,7 @@ You can drop everything in the `zig-out/htmlout` folder and host it wherever.
 Was a fun start to my zig arc! I hope you guys don't waste time debugging shit like me lol.
 
 May we zig harder every day.
+
+<br/>
+
+[Source Code](https://github.com/seatedro/steroids.zig)

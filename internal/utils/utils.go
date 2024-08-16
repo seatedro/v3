@@ -88,6 +88,10 @@ func GetAllPosts() ([]models.Post, error) {
 		posts = append(posts, post)
 	}
 
+	sort.Slice(posts, func(i, j int) bool {
+		return posts[i].Date.After(posts[j].Date)
+	})
+
 	return posts, nil
 }
 

@@ -7,7 +7,7 @@ import (
 )
 
 templ HomeComponent(userData models.User, recentPosts []models.Post) {
-	@shared.Layout("Rohit Prakash", userData) {
+	@shared.Layout("Rohit Prakash", userData, "/static/images/default-og.png") {
 		<div class="space-y-8">
 			<section class="space-y-4">
 				<h1 class="text-4xl font-bold">{ userData.Name }</h1>

@@ -1,4 +1,5 @@
 ---
+cover: /static/images/soundwave.webp
 date: 2022-09-17
 author:
   name: Rohit Prakash

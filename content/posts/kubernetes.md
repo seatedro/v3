@@ -1,4 +1,5 @@
 ---
+cover: /static/images/k8s.webp
 author:
   name: Rohit Prakash
 date: 2021-09-19

@@ -107,7 +107,7 @@ func BlogPost(user models.User, post models.Post) templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = shared.Layout(fmt.Sprintf("%s | %s", post.Title, user.Name), user).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = shared.Layout(fmt.Sprintf("%s | %s", post.Title, user.Name), user, post.Cover).Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

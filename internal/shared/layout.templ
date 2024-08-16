@@ -1,8 +1,11 @@
 package shared
 
-import "github.com/seatedro/v3/internal/models"
+import (
+"fmt"
+"github.com/seatedro/v3/internal/models"
+)
 
-templ Layout(title string, user models.User) {
+templ Layout(title string, user models.User, ogImage string) {
 <!DOCTYPE html>
 <html lang="en" class="h-full">
 
@@ -16,6 +19,21 @@ templ Layout(title string, user models.User) {
 	<meta name="language" content="English" />
 	<link rel="stylesheet" href="/static/css/styles.css" />
 	<link rel="stylesheet" href="/static/css/global.css" />
+	<!-- Open Graph -->
+	<meta property="og:title" content={ title } />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://seated.ro" />
+	<meta property="og:image" content={ ogImage } />
+	<meta property="og:description" content="swe by day, swe by night." />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:site_name" content="seated.ro" />
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@seatedro" />
+	<meta name="twitter:creator" content="@seatedro" />
+	<meta name="twitter:title" content={ title } />
+	<meta name="twitter:description" content="swe by day, swe by night." />
+	<meta name="twitter:image" content={ fmt.Sprintf("https://seated.ro%s", ogImage) } />
 </head>
 
 <body class="antialiased max-w-2xl mx-4 mt-8 lg:mx-auto text-[#fbf1c7] bg-[#282828]">

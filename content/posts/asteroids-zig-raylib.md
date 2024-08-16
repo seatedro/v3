@@ -1,5 +1,5 @@
 ---
-cover: /static/images/.webp
+cover: /static/images/zig-raylib/ingame.webp
 date: 2024-08-15
 summary: How to build a game with raylib+zig+emscripten.
 tags:

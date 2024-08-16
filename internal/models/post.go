@@ -7,6 +7,7 @@ type Post struct {
 	Date    time.Time `yaml:"date"`
 	Summary string    `yaml:"summary"`
 	Tags    []string  `yaml:"tags"`
+	Cover   string    `yaml:"cover"`
 	Content string    `yaml:"-"` // This will be populated after parsing the Markdown content
 	Slug    string    `yaml:"-"` // This will be generated from the title
 }

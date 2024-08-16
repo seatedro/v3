@@ -7,7 +7,7 @@ import (
 )
 
 templ BlogComponent(userData models.User, posts []models.Post) {
-	@shared.Layout("Blog | Rohit Prakash", userData) {
+	@shared.Layout("Blog | Rohit Prakash", userData, "/static/images/default-og.png") {
 		<h1 class="text-4xl font-bold mb-8">all posts</h1>
 		<section class="space-y-4">
 			<ul>

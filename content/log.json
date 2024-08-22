@@ -23,5 +23,15 @@
 		"date": "2024-08-15",
 		"activity": "ghostty talk - mitchellh",
 		"href": "https://www.youtube.com/watch?v=l_qY2p0OH9A"
+	},
+	{
+		"date": "2024-08-18",
+		"activity": "io_uring/kq abstraction - tigerbeetle",
+		"href": "https://tigerbeetle.com/blog/a-friendly-abstraction-over-iouring-and-kqueue"
+	},
+	{
+		"date": "2024-08-22",
+		"activity": "efficient i/o with io_uring",
+		"href": "https://kernel.dk/io_uring.pdf"
 	}
 ]

@@ -772,10 +772,6 @@ code {
   display: none;
 }
 
-.h-14 {
-  height: 3.5rem;
-}
-
 .h-8 {
   height: 2rem;
 }
@@ -786,10 +782,6 @@ code {
 
 .max-h-\[50vh\] {
   max-height: 50vh;
-}
-
-.w-16 {
-  width: 4rem;
 }
 
 .w-8 {

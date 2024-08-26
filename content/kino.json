@@ -16,7 +16,15 @@
 		"description": "only js runtime i use"
 	},
 	{
-		"name": "go/zig/rust/ts/python",
+		"name": "go/zig/rust/js/python",
 		"description": "only languages i use"
+	},
+	{
+		"name": "zoxide",
+		"description": "much better cd"
+	},
+	{
+		"name": "yazi",
+		"description": "terminal file manager"
 	}
 ]

@@ -7,7 +7,7 @@ import (
 )
 
 templ DailyLogComponent(userData models.User, log []models.Log) {
-	@shared.Layout("Reading Log | Rohit Prakash", userData, "/static/images/default-og.png") {
+	@shared.Layout("readinglist | seatedro", userData, "/static/images/default-og.png") {
 		<h1 class="text-4xl font-bold">log</h1>
 		<h3 class="text-md font-semibold mb-4 italic text-[#83a598]">anything i've watched/read</h3>
 		<section class="space-y-4">

@@ -95,7 +95,7 @@ func DailyLogComponent(userData models.User, log []models.Log) templ.Component {
 			}
 			return templ_7745c5c3_Err
 		})
-		templ_7745c5c3_Err = shared.Layout("Reading Log | Rohit Prakash", userData, "/static/images/default-og.png").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = shared.Layout("readinglist | seatedro", userData, "/static/images/default-og.png").Render(templ.WithChildren(ctx, templ_7745c5c3_Var2), templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

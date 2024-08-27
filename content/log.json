@@ -33,5 +33,10 @@
 		"date": "2024-08-22",
 		"activity": "efficient i/o with io_uring",
 		"href": "https://kernel.dk/io_uring.pdf"
+	},
+	{
+		"date": "2024-08-27",
+		"activity": "zig's boundedarray",
+		"href": "https://www.openmymind.net/Zigs-BoundedArray/"
 	}
 ]

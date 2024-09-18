@@ -8,7 +8,7 @@
 		"description": "who needs windows anyway"
 	},
 	{
-		"name": "kitty",
+		"name": "ghostty",
 		"description": "best terminal emulator i have used"
 	},
 	{
@@ -26,5 +26,9 @@
 	{
 		"name": "yazi",
 		"description": "terminal file manager"
+	},
+	{
+		"name": "fzf",
+		"description": "you need this or you are ngmi"
 	}
 ]

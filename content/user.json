@@ -22,9 +22,14 @@
 	],
 	"projects": [
 		{
-			"title": "readless",
-			"href": "https://github.com/seatedro/readless",
-			"description": "chrome extension that summarizes selected text on a website."
+			"title": "asciigen",
+			"href": "https://github.com/seatedro/asciigen",
+			"description": "convert images/video to ascii. save to a file or render on the terminal!"
+		},
+		{
+			"title": "memegrep",
+			"href": "https://memegrep.com",
+			"description": "find any meme with just a seearch"
 		},
 		{
 			"title": "guam",
@@ -35,11 +40,6 @@
 			"title": "mira(me)",
 			"href": "https://github.com/seatedro/mirame",
 			"description": "my version of the monkeylang interpreter in rust & go."
-		},
-		{
-			"title": "steroids.zig",
-			"href": "https://roids.seated.ro",
-			"description": "an asteroids clone in zig using raylib."
 		},
 		{
 			"title": "all projects →",
